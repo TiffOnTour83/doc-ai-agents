@@ -1,0 +1,20 @@
+{
+  "title": "Doc Logic Pipeline",
+  "nodes": [
+    { "id": "source", "label": "Source .docx", "kind": "data", "note": "read-only, never modified" },
+    { "id": "extractor", "label": "Extractor", "kind": "new" },
+    { "id": "suggester", "label": "Schema Suggester", "kind": "new", "note": "rule-based default, LLM-pluggable" },
+    { "id": "gate", "label": "Human Approval Gate", "kind": "people", "note": "decisions recorded as artifacts" },
+    { "id": "harmonizer", "label": "Harmonizer", "kind": "new", "note": "profile-driven, change-logged" },
+    { "id": "auditor", "label": "Auditor", "kind": "new" },
+    { "id": "artifacts", "label": "Artifacts + Manifest", "kind": "data", "note": "JSON / RTM CSV / taxonomy / report" }
+  ],
+  "edges": [
+    { "from": "source", "to": "extractor", "label": "parse" },
+    { "from": "extractor", "to": "suggester", "label": "structure" },
+    { "from": "suggester", "to": "gate", "label": "proposal" },
+    { "from": "gate", "to": "harmonizer", "label": "approved", "style": "one-way" },
+    { "from": "harmonizer", "to": "auditor", "label": "normalized" },
+    { "from": "auditor", "to": "artifacts", "label": "generate" }
+  ]
+}

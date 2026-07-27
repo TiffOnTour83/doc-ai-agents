@@ -1,0 +1,14 @@
+{
+  "name": "default",
+  "max_depth": 4,
+  "require_numbering": false,
+  "min_body_paragraphs": 0,
+  "forbid_duplicate_titles": true,
+  "taxonomy": {
+    "Introduction": ["introduction", "purpose", "scope", "overview"],
+    "Process": ["process", "procedure", "workflow", "steps", "method"],
+    "Governance": ["approval", "review", "revision", "control", "governance", "responsibility"],
+    "Records": ["record", "retention", "documentation", "log", "archive"],
+    "Reference": ["definition", "glossary", "reference", "appendix", "acronym"]
+  }
+}

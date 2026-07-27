@@ -1,0 +1,134 @@
+{
+ "nodes": [
+  {
+   "id": "title",
+   "type": "text",
+   "text": "# Doc Logic Pipeline",
+   "x": -40,
+   "y": -180,
+   "width": 640,
+   "height": 80,
+   "color": "6"
+  },
+  {
+   "id": "source",
+   "type": "text",
+   "text": "\ud83d\uddc4\ufe0f **Source .docx**\nread-only, never modified",
+   "x": 0,
+   "y": 0,
+   "width": 280,
+   "height": 130,
+   "color": "6"
+  },
+  {
+   "id": "extractor",
+   "type": "text",
+   "text": "\ud83d\udfe2 **Extractor**",
+   "x": 440,
+   "y": 0,
+   "width": 280,
+   "height": 130,
+   "color": "4"
+  },
+  {
+   "id": "suggester",
+   "type": "text",
+   "text": "\ud83d\udfe2 **Schema Suggester**\nrule-based default, LLM-pluggable",
+   "x": 880,
+   "y": 0,
+   "width": 280,
+   "height": 130,
+   "color": "4"
+  },
+  {
+   "id": "gate",
+   "type": "text",
+   "text": "\ud83d\udc64 **Human Approval Gate**\ndecisions recorded as artifacts",
+   "x": 1320,
+   "y": 0,
+   "width": 280,
+   "height": 130,
+   "color": "5"
+  },
+  {
+   "id": "harmonizer",
+   "type": "text",
+   "text": "\ud83d\udfe2 **Harmonizer**\nprofile-driven, change-logged",
+   "x": 1760,
+   "y": 0,
+   "width": 280,
+   "height": 130,
+   "color": "4"
+  },
+  {
+   "id": "auditor",
+   "type": "text",
+   "text": "\ud83d\udfe2 **Auditor**",
+   "x": 2200,
+   "y": 0,
+   "width": 280,
+   "height": 130,
+   "color": "4"
+  },
+  {
+   "id": "artifacts",
+   "type": "text",
+   "text": "\ud83d\uddc4\ufe0f **Artifacts + Manifest**\nJSON / RTM CSV / taxonomy / report",
+   "x": 2640,
+   "y": 0,
+   "width": 280,
+   "height": 130,
+   "color": "6"
+  }
+ ],
+ "edges": [
+  {
+   "id": "e0",
+   "fromNode": "source",
+   "fromSide": "right",
+   "toNode": "extractor",
+   "toSide": "left",
+   "label": "parse"
+  },
+  {
+   "id": "e1",
+   "fromNode": "extractor",
+   "fromSide": "right",
+   "toNode": "suggester",
+   "toSide": "left",
+   "label": "structure"
+  },
+  {
+   "id": "e2",
+   "fromNode": "suggester",
+   "fromSide": "right",
+   "toNode": "gate",
+   "toSide": "left",
+   "label": "proposal"
+  },
+  {
+   "id": "e3",
+   "fromNode": "gate",
+   "fromSide": "right",
+   "toNode": "harmonizer",
+   "toSide": "left",
+   "label": "approved (one-way)"
+  },
+  {
+   "id": "e4",
+   "fromNode": "harmonizer",
+   "fromSide": "right",
+   "toNode": "auditor",
+   "toSide": "left",
+   "label": "normalized"
+  },
+  {
+   "id": "e5",
+   "fromNode": "auditor",
+   "fromSide": "right",
+   "toNode": "artifacts",
+   "toSide": "left",
+   "label": "generate"
+  }
+ ]
+}

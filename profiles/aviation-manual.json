@@ -1,0 +1,17 @@
+{
+  "name": "aviation-manual",
+  "max_depth": 3,
+  "require_numbering": true,
+  "min_body_paragraphs": 1,
+  "forbid_duplicate_titles": true,
+  "taxonomy": {
+    "Program Approval": ["approval", "administrator", "submission", "authorization"],
+    "Qualification": ["qualification", "duty position", "standards", "proficiency", "currency"],
+    "Curriculum": ["curriculum", "training", "course", "syllabus", "task analysis", "indoctrination"],
+    "Evaluation": ["evaluation", "gradeable", "checking", "validation", "performance"],
+    "Instructor": ["instructor", "evaluator", "facilitator", "certification"],
+    "Equipment & Facilities": ["simulator", "device", "facility", "classroom", "equipment"],
+    "Records": ["record", "retention", "data collection", "audit", "documentation"],
+    "Change Management": ["revision", "amendment", "change", "downstream", "impact"]
+  }
+}

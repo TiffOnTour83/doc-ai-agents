@@ -1,0 +1,27 @@
+flowchart LR
+    %% Doc Logic Pipeline
+    source[("Source .docx")]
+    extractor["Extractor"]
+    suggester["Schema Suggester"]
+    gate(["Human Approval Gate"])
+    harmonizer["Harmonizer"]
+    auditor["Auditor"]
+    artifacts[("Artifacts + Manifest")]
+    source -->|parse| extractor
+    extractor -->|structure| suggester
+    suggester -->|proposal| gate
+    gate -->|approved| harmonizer
+    harmonizer -->|normalized| auditor
+    auditor -->|generate| artifacts
+    class source data
+    class extractor newSys
+    class suggester newSys
+    class gate people
+    class harmonizer newSys
+    class auditor newSys
+    class artifacts data
+    classDef newSys fill:#e6f4ea,stroke:#2e9e5b,color:#1a3c28;
+    classDef legacy fill:#fdf0e3,stroke:#d97b29,color:#4a2d10;
+    classDef people fill:#e8f0fe,stroke:#4a7fd4,color:#1d3557;
+    classDef data fill:#f3e8fd,stroke:#8e5bd4,color:#3c1d57;
+    classDef external fill:#fdeaea,stroke:#c0392b,color:#571d1d;
